@@ -1,15 +1,18 @@
 ﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Collections.ObjectModel;
+using System.IO;
 
 namespace PersonasAD
 {
+    //Prueba
     public class BaseDatosService
     {
         private readonly SqliteConnection _conexion;
         private SqliteCommand _comando;
         public BaseDatosService()
         {
-            _conexion = new SqliteConnection("Data Source=personas.db");
+            _conexion = new SqliteConnection("Data Source=" + Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "personas.db"));
             CrearTablas();
             InsertarDatos();
         }
